@@ -1,14 +1,14 @@
 $(function() {
-  var $window = $(window);
-  var $slideAd = $('#slideAd');
-  var endZone = $('#footer').offset().top - $window.height() - 500;
+  //SETUP
+  var $list, $newItemForm, $newItemButton;     
+  var item = '';                            // item is an empty string
+  $list = $('ul');                          // cache the unordered list
+  $newItemForm = $('#newItemForm');         // cache form to add new items
+  $newItemButton = $('#newItemButton');     //cache button to show form
 
-  $window.on('scroll', function() {
-
-    if (endZone < $window.scrollTop() ) {
-      $slideAd.animate({ 'right': '0px' }, 250);
-    } else {
-        $slideAd.stop(true).animate({ 'right': '-360px' }, 250);
-    }
+  $('li').hide().each(function(index) {       // hide list items
+    $(this).delay(450 * index).fadeIn(1600);  //then fade them in
   });
-});
+
+  
+
