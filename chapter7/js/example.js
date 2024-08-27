@@ -21,7 +21,7 @@ updateCount();                                    // call the update count funct
 // SETUP FOR NEW ITEMS
 $newItemButton.show();              // show the button
 $newItemForm.hide();                // Hide the form
-$('#showForm.show').on('click', function() {      // when the new item is clicked
+$('#showForm').on('click', function() {      // when the new item is clicked
   $newItemButton.hide();                          // hide the button
   $newItemForm.show();                            // show the form
 });
