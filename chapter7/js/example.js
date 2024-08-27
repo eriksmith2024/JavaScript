@@ -10,5 +10,9 @@ $(function() {
     $(this).delay(450 * index).fadeIn(1600);  //then fade them in
   });
 
+//ITEM COUNTER
+function updateCount() {                          // declare a function
+  var items = $('li[class!=completed]').length;  //Number of items in the list
+  $('#counter').text(items);                      // add into the counter circle
   
-
+}
