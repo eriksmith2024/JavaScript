@@ -1,15 +1,16 @@
-function showEvents(data) {     //Callback when JSON laods
-  var NewContent = '';          //Variable to hold HTML
+function showEvents(data) {                           // Callback when JSON loads
+  var newContent = '';                                // Variable to hold HTML
+ 
+    // BUILD UP STRING WITH NEW CONTENT (could also use DOM manipulation)
+    for (var i = 0; i < data.showEvents.length; i++) {   // Loop through object
+      newContent += '<div class="showevent">';
+      newContent += '<img src="' + data.showEventsevents[i].map + '" ';
+      newContent += 'alt="' + data.showEventsevents[i].location + '" />';
+      newContent += '<p><b>' + data.showEventsevents[i].location + '</b><br>';
+      newContent += data.showEventsevents[i].date + '</p>';
+      newContent += '</div>';
+    }
 
-// BUILD UP STRING WITH NEW CONTENT (could also use DOM manipulation)
-for (var i = 0; i < data.events.length; i++) { // loop through data
-  newContent += '<div class="event">';
-  newContent += '<img src="' + data.events[i].map + '"';
-  newContent += 'alt="' + data.events[i].location + '" />';
-  newContent += '<p><b>' + data.events[i].location + '</b><br>';
-  newContent += data.events[i].date + '</p>';
-  newContent +='</div>';
-}
-
-// update the page with the new content
+    // Update the page with the new content
+    document.getElementById('content').innerHTML = newContent;
 }
