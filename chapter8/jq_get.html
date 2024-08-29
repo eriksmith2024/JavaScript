@@ -10,12 +10,28 @@
     <section id="content">
       <h2>Vote for a t-shirt.</h2>
       <p id="selector">Select which color t-shirt you want to see this year:</p>
-      <div id="vote"><div class="third"><a href="http://example.org?tshirt=gray"><img src="img/t-gray.png" id="gray" alt="gray" /></a></div><div class="third"><a href="http://example.org?tshirt=yellow" id="yellow"><img src="img/t-yellow.png" id="yellow" alt="yellow" /></a></div><div class="third"><a href="http://example.org?tshirt=green"><img src="img/t-green.png" id="green" alt="green" /></a></div></div>';
 
+      <!-- Vote Counter Display -->
+      <div id="vote-counts">
+        <p>Gray T-Shirt: <span id="gray-count">0</span> votes</p>
+        <p>Yellow T-Shirt: <span id="yellow-count">0</span> votes</p>
+        <p>Green T-Shirt: <span id="green-count">0</span> votes</p>
+      </div>
+
+      <div id="vote">
+        <div class="third">
+          <a href="#" data-color="gray"><img src="img/t-gray.png" id="gray" alt="gray" /></a>
+        </div>
+        <div class="third">
+          <a href="#" data-color="yellow"><img src="img/t-yellow.png" id="yellow" alt="yellow" /></a>
+        </div>
+        <div class="third">
+          <a href="#" data-color="green"><img src="img/t-green.png" id="green" alt="green" /></a>
+        </div>
+      </div>
 
     </section>
-
-    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="js/jq_get.js"></script>
   </body>
 </html>
