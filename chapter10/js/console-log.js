@@ -19,4 +19,5 @@ $('#calculator').on('submit', function(e) {                 //when the user clic
     area = width * height;
     console.log(area);                                         // write area to console
 
-})
+    $form.append('<p>' + area + '</p>')
+});
