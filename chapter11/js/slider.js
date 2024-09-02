@@ -23,8 +23,45 @@ $('.slider').each(function() {                                  // for every sli
     $.each($slides, function(index) {                            
         // create a button element for the button
         var $button = $('<button type="button" class="slide-btn">&bull;</button>');
-    })
+        if(index === currentIndex) {                                  // If index is the current item
+            $button.addClass('active');                               // Add the active class
+        }
+        $button.on('click', function() {                              // Create an event handler for the button
+            move(index);                                               // it calls the move function
+        }).appendTo('.slide-buttons');                                 //Add to the buttons holder
+        buttonArray.push($button);                                     // Add it to the button array
+    });
 
+    advance();                                  // Script is set up - call advance() tio start timer
+});
 
+function move(newIndex) {                       // creates the slide from the old to the new one
+    var animateLeft, slideLeft;                 //Declares the variables
+
+    advance();                                  // When slide moves call adance() function again
+
+    // If current slide is showing or a slide is animating then do nothing
+    if ($group.is(':animated') || currentIndex === newIndex ) {
+        return;
     }
-})
+
+    buttonArray[currentIndex].removeClass('active');                // remove active class from item
+    buttonArray[newIndex].addClass('active');                       // add class to the new item
+
+    if (newIndex > currentIndex) {                                  // if new item is less than current
+        slideLeft = '100%';                                         //sit the new slide to the right
+        animateLeft = '-100%';                                      //animate the current group to the left
+    }   else {                                                      // otherwise
+        slideLeft ='-100%';                                         // sit the new slide to the left
+        animateLeft = '100%';                                       // Animate the current group to the right
+    }
+    // position the new slide to the left (if less) or the right (if more) of current
+    $slides.eq(newIndex).css( {left: slideLeft, display: 'block'} );
+    $group.animate( {left: animateLeft}, function() {                   //animates slides and
+        $slides.eq(currentIndex).css( { display: 'none'} );             // Hide previous slides
+        $slides.eq(newIndex).css( {left: 0} );                             //set position of new item
+        $group.css( {left: 0} );                                        //set position of group of slides
+        currentIndex = newIndex;                                        // set currentIndex to new imahe
+    });
+}
+
